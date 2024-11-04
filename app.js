@@ -16,11 +16,12 @@ app.use(express.static(__dirname));
 app.use(cookieparser());
 
 const db = process.env.MONGO_DB;
+const port = process.env.PORT;
 mongoose
-  .connect("mongodb://localhost:27017/famasto")
+  .connect(db)
   .then((result) => {
     console.log("Connected to the database");
-    app.listen(4002, () => console.log("Listening to port"));
+    app.listen(4002, () => console.log("Listening to port:", port));
   })
   .catch((err) => console.log(err));
 
