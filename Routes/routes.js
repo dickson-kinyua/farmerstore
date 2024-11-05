@@ -17,12 +17,9 @@ const {
   contact,
 } = require("../RoutesController/controller");
 
-router.post("/register", registerUser);
 router.post("/request", postReqProduct);
 router.get("/requestcart/:userID", requestCart);
-router.post("/login", userLogin);
 router.get("/profile", userProfile);
-router.post("/logout", logout);
 router.get("/fetchPopulars", fetchPopulars);
 router.get("/fetchChemicals", fetchChemicals);
 router.get("/fetchSeeds", fetchSeeds);

@@ -4,6 +4,7 @@ const cookieparser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const allRoutes = require("./Routes/routes");
+const authRouter = require("./Routes/auth.routes");
 
 const app = express();
 
@@ -11,7 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 app.use(express.static(__dirname));
 app.use(cookieparser());
 
@@ -25,4 +26,5 @@ mongoose
   })
   .catch((err) => console.log(err));
 
+app.use("/auth", authRouter);
 app.use(allRoutes);
